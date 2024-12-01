@@ -7,9 +7,13 @@ export class UserRepositoriesMongoDB implements IUserRepositories{
     await UserSchema.create(body);
   }
 
- async findByEmail(email: string): Promise<User | null> {
-  const user = await UserSchema.findOne({email});
-  return user;
- }
+  async findByEmail(email: string): Promise<User | null> {
+    const user = await UserSchema.findOne({email});
+    return user;
+  }
+
+  async findAll(limit: number, offset: number): Promise<User[]> {
+    return await UserSchema.find().select("-password").limit(limit).skip(offset);
+  }
 
 }
