@@ -12,7 +12,6 @@ class SigninController {
       res.send({Token: token});
 
     } catch (error: any) {
-      console.log(error);
       res.status(500).send(error.message);
     }
   }

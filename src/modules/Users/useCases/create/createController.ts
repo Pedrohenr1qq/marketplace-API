@@ -9,12 +9,11 @@ class CreateController{
     try {
       const body = req.body;
       const createService = container.resolve(CreateService);
-      createService.execute(body);
+      await createService.execute(body);
       res.sendStatus(201);
 
     } catch (error: any) {
-      console.log(`Error in CREATE USER: ${error.message}`);
-      res.status(500).send({message: "Internal server error."});
+      res.status(500).send(error.message);
     }
   }
 }
