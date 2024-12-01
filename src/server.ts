@@ -1,4 +1,6 @@
 // Imports
+import "reflect-metadata";
+import "./helpers/container"
 import express, {json} from "express";
 import cors from "cors";
 import ConnectToMongoDB from "database";
