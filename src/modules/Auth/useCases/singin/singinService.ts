@@ -15,7 +15,6 @@ export class singinService{
     if(!user) throw new Error("Email or password invalid");
 
     const isPassowrdOk = await bcrypt.compare(data.password, user.password);
-    console.log(isPassowrdOk);
     if(!isPassowrdOk) throw new Error("Email or password invalid");
 
     return this.AuthRepositories.generateToken(user._id);
