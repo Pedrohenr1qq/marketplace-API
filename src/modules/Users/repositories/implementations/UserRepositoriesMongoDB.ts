@@ -21,4 +21,8 @@ export class UserRepositoriesMongoDB implements IUserRepositories{
     return user;
   }
 
+  async update(id: string, data: User): Promise<void> {
+    await UserSchema.findByIdAndUpdate(id, data);
+  }
+
 }
