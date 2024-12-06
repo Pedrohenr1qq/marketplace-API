@@ -1,6 +1,7 @@
 import {Router} from "express"
 import authMiddleware from "middlewares/authMiddleware";
 import paginationMiddleware from "middlewares/paginationMiddleware";
+import addAddressController from "modules/Users/useCases/addAddress/addAddressController";
 import createController from "modules/Users/useCases/create/createController";
 import deleteController from "modules/Users/useCases/delete/deleteController";
 import findAllController from "modules/Users/useCases/findAll/findAllController";
@@ -14,6 +15,9 @@ userRoutes.post('/', createController.handle);
 
 // Use auth middleware
 userRoutes.use(authMiddleware.execute);
+//
+
+userRoutes.post('/add-address', addAddressController.handle);
 
 // Read
 userRoutes.get('/', paginationMiddleware.execute,findAllController.handle);
