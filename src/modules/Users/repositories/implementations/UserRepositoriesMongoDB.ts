@@ -25,4 +25,8 @@ export class UserRepositoriesMongoDB implements IUserRepositories{
     await UserSchema.findByIdAndUpdate(id, data);
   }
 
+  async delete(id: string): Promise<void> {
+    await UserSchema.findByIdAndDelete(id);
+  }
+
 }

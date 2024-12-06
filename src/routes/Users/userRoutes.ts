@@ -2,6 +2,7 @@ import {Router} from "express"
 import authMiddleware from "middlewares/authMiddleware";
 import paginationMiddleware from "middlewares/paginationMiddleware";
 import createController from "modules/Users/useCases/create/createController";
+import deleteController from "modules/Users/useCases/delete/deleteController";
 import findAllController from "modules/Users/useCases/findAll/findAllController";
 import findByIdController from "modules/Users/useCases/findById/findByIdController";
 import updateController from "modules/Users/useCases/update/updateController";
@@ -20,5 +21,8 @@ userRoutes.get('/:id', findByIdController.handle);
 
 // Update
 userRoutes.put('/', updateController.handle);
+
+// Delete
+userRoutes.delete('/', deleteController.handle);
 
 export default userRoutes;
