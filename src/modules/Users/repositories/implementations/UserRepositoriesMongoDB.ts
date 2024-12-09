@@ -2,6 +2,7 @@ import { User } from "modules/Users/entities/User";
 import { IUserRepositories } from "../IUserRepositories";
 import UserSchema from "modules/Users/schemas/UserSchema";
 import { Address } from "modules/Users/entities/Address";
+import { Product } from "modules/Products/entities/Product";
 
 export class UserRepositoriesMongoDB implements IUserRepositories{
   async create(body: User): Promise<void> {
@@ -73,6 +74,28 @@ export class UserRepositoriesMongoDB implements IUserRepositories{
       },
       {
         $push: {
+          favorite_products: {
+            _id: productId
+          }
+        }
+      }
+    );
+  }
+
+  async findFavoriteProductById(userId: string, productId: string): Promise<Product | null>{
+    return await UserSchema.findOne(
+        {_id: userId, "favorite_products._id": productId},
+        {"avorite_products.$": 1}
+      );
+  }
+
+  async removeFavoriteProduct(userId: string, productId: string): Promise<void>{
+    await UserSchema.findOneAndUpdate(
+      {
+        _id: userId
+      },
+      {
+        $pull: {
           favorite_products: {
             _id: productId
           }

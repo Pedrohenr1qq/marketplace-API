@@ -2,7 +2,7 @@ import { IUserRepositories } from "modules/Users/repositories/IUserRepositories"
 import { inject, injectable } from "tsyringe";
 
 @injectable()
-export class AddFavoriteProductService{
+export class RemoveFavoriteProductService{
   constructor(
     @inject ("UserRepositories")
     private userRepositories: IUserRepositories
@@ -11,8 +11,11 @@ export class AddFavoriteProductService{
   async execute(userId: string, productId: string){
     const user = await this.userRepositories.findById(userId);
     if(!user) throw new Error("User not found");
+
+    const product = await this.userRepositories.findFavoriteProductById(userId, productId);
+    if(!product) throw new Error("Product not found");
     
-    await this.userRepositories.addFavoriteProduct(userId, productId);
+    await this.userRepositories.removeFavoriteProduct(userId, productId);
   }
 
 }

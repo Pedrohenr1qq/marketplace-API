@@ -1,5 +1,6 @@
 import { Address } from "../entities/Address";
 import { User } from "../entities/User";
+import { Product } from "modules/Products/entities/Product";
 
 export interface IUserRepositories{
   create(body: User): Promise<void>;
@@ -12,5 +13,7 @@ export interface IUserRepositories{
   removeAddress(userId: string, addressId: string): Promise<void>;
   findByAddressId(userId: string, addressId: String): Promise<Address | null>;
   addFavoriteProduct(userId: string, productId: string): Promise<void>;
+  findFavoriteProductById(userId: string, productId: string): Promise<Product | null>;
+  removeFavoriteProduct(userId: string, productId: string): Promise<void>;
 }
 
