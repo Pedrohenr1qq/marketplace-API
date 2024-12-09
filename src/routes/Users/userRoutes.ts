@@ -10,17 +10,20 @@ import findByIdController from "modules/Users/useCases/findById/findByIdControll
 import removeAddressController from "modules/Users/useCases/removeAddress/removeAddressController";
 import removeFavoriteProductController from "modules/Users/useCases/removeFavoriteProduct/removeFavoriteProductController";
 import updateController from "modules/Users/useCases/update/updateController";
+import validateSchema from "middlewares/schemaValidationMiddleware";
+import { UserSchemaJoi } from "modules/Users/schemas/joi/UserSchemaJoi";
+import { AddressSchemaJoi } from "modules/Users/schemas/joi/AddressSchemaJoi";
 
 const userRoutes = Router();
 
 // Create
-userRoutes.post('/', createController.handle);
+userRoutes.post('/', validateSchema.execute(UserSchemaJoi), createController.handle);
 
 // Use auth middleware
 userRoutes.use(authMiddleware.execute);
 //
 
-userRoutes.post('/add-address', addAddressController.handle);
+userRoutes.post('/add-address', validateSchema.execute(AddressSchemaJoi),addAddressController.handle);
 userRoutes.post('/add-favorite-product/:productId', addFavoriteProductController.handle);
 
 
