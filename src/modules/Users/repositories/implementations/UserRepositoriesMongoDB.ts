@@ -64,4 +64,21 @@ export class UserRepositoriesMongoDB implements IUserRepositories{
       }
     );
   }
+
+
+  async addFavoriteProduct(userId: string, productId: string): Promise<void>{
+    await UserSchema.findOneAndUpdate(
+      {
+        _id: userId
+      },
+      {
+        $push: {
+          favorite_products: {
+            _id: productId
+          }
+        }
+      }
+    );
+  }
+
 }
