@@ -6,6 +6,7 @@ import createController from "modules/Users/useCases/create/createController";
 import deleteController from "modules/Users/useCases/delete/deleteController";
 import findAllController from "modules/Users/useCases/findAll/findAllController";
 import findByIdController from "modules/Users/useCases/findById/findByIdController";
+import removeAddressController from "modules/Users/useCases/removeAddress/removeAddressController";
 import updateController from "modules/Users/useCases/update/updateController";
 
 const userRoutes = Router();
@@ -28,5 +29,6 @@ userRoutes.put('/', updateController.handle);
 
 // Delete
 userRoutes.delete('/', deleteController.handle);
+userRoutes.delete('/remove-address/:addressId', removeAddressController.handle);
 
 export default userRoutes;
