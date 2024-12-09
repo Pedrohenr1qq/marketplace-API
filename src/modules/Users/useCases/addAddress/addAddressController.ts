@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { AddAddressService } from "./addAddressService";
 
-class addAddressController{
+class AddAddressController{
   async handle(req: Request, res: Response): Promise<void>{
     try {
       const userId = res.locals.user._id;
@@ -20,4 +20,4 @@ class addAddressController{
   }
 }
 
-export default new addAddressController();
+export default new AddAddressController();
