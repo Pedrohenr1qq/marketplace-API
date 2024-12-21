@@ -13,7 +13,7 @@ class CreateController{
       res.sendStatus(201);
 
     } catch (error: any) {
-      res.send("Error: "+ error.getMessage);
+      res.status(500).send("Error: "+ error.message);
     }
   }
 
