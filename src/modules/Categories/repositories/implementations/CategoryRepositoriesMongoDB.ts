@@ -18,6 +18,9 @@ export class CategoryRepositoriesMongoDB implements ICategoyRepositories{
     return category;
   }
 
+  async findAll(limit: number, offset: number): Promise<Category[]>{
+    return await CategorySchema.find().limit(limit).skip(offset);
+  }
 
 
 }
