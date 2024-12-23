@@ -5,4 +5,6 @@ export interface ICategoyRepositories{
   findByName(name: string): Promise<Category | null>;
   findById(id: string): Promise<Category | null>;
   findAll(limit: number, offset: number): Promise<Category[]>;
+
+  delete(id: string): Promise<void>;
 }

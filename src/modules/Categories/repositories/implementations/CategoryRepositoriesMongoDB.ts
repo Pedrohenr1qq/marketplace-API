@@ -23,4 +23,9 @@ export class CategoryRepositoriesMongoDB implements ICategoyRepositories{
   }
 
 
+
+
+  async delete(id: string): Promise<void>{
+    await CategorySchema.findByIdAndDelete(id);
+  }
 }
