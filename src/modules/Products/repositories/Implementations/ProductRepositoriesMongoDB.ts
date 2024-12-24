@@ -9,8 +9,12 @@ export class ProductRepositoriesMongoDB implements IProductRepositories{
     return product;
   }
 
-
   async create(body: Product): Promise<void>{
     await ProductSchema.create(body);
+  }
+
+  async findById(id: string): Promise<Product | null>{
+    const product = await ProductSchema.findById(id);
+    return product;
   }
 }
