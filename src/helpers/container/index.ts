@@ -2,6 +2,8 @@ import { IAuthRepositories } from "modules/Auth/repositories/IAuthRepositories";
 import { AuthRepositoriesMongoDB } from "modules/Auth/repositories/implementations/AuthRepositoriesMongoDB";
 import { ICategoyRepositories } from "modules/Categories/repositories/ICategoryRepositories";
 import { CategoryRepositoriesMongoDB } from "modules/Categories/repositories/implementations/CategoryRepositoriesMongoDB";
+import { ProductRepositoriesMongoDB } from "modules/Products/repositories/Implementations/ProductRepositoriesMongoDB";
+import { IProductRepositories } from "modules/Products/repositories/IProductRepositories";
 import { UserRepositoriesMongoDB } from "modules/Users/repositories/implementations/UserRepositoriesMongoDB";
 import { IUserRepositories } from "modules/Users/repositories/IUserRepositories";
 import { container } from "tsyringe";
@@ -19,4 +21,9 @@ container.registerSingleton<IAuthRepositories>(
 container.registerSingleton<ICategoyRepositories>(
   "CategoryRepositories",
   CategoryRepositoriesMongoDB
+)
+
+container.registerSingleton<IProductRepositories>(
+  "ProductRepositories",
+  ProductRepositoriesMongoDB
 )
