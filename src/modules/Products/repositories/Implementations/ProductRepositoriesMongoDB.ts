@@ -11,10 +11,6 @@ export class ProductRepositoriesMongoDB implements IProductRepositories{
 
 
   async create(body: Product): Promise<void>{
-    const product = await this.findByBarCode(body.bar_code);
-
-    if(product) throw new Error("Bar code invalid");
-
     await ProductSchema.create(body);
   }
 }

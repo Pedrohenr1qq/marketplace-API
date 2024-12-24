@@ -1,5 +1,6 @@
 import { model, Schema } from "mongoose";
 import { Product } from "../entities/Product";
+import { Category } from "modules/Categories/entities/Category";
 
 const ProductSchema = new Schema<Product>({
   name: {type: String, required: true},
@@ -9,7 +10,7 @@ const ProductSchema = new Schema<Product>({
   bar_code: {type: Number, required: true, unique: true},
   categories: [
     {
-      name: {type: String, required: true},
+      _id: { type: Schema.Types.ObjectId, ref:"categories"},
       created_at: {type: Date, default: Date.now(), required: true}
     }
   ],
