@@ -23,6 +23,10 @@ export class ProductRepositoriesMongoDB implements IProductRepositories{
     return products;
   }
 
+  async update(id: string, data: Product): Promise<void>{
+    await ProductSchema.findByIdAndUpdate(id, data);
+  }
+
   async delete(id: string): Promise<void>{
     await ProductSchema.findByIdAndDelete(id);
   }
