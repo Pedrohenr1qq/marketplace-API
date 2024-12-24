@@ -5,4 +5,6 @@ export interface IProductRepositories{
   findByBarCode(barCode: number): Promise<Product | null>;
   findById(id: string): Promise<Product | null>;
   findAll(limit: number, offset: number): Promise<Product[]>;
+
+  delete(id: string): Promise<void>;
 }

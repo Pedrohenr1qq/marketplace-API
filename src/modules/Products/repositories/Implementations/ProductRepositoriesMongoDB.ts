@@ -22,4 +22,8 @@ export class ProductRepositoriesMongoDB implements IProductRepositories{
     const products = await ProductSchema.find().limit(limit).skip(offset);
     return products;
   }
+
+  async delete(id: string): Promise<void>{
+    await ProductSchema.findByIdAndDelete(id);
+  }
 }
