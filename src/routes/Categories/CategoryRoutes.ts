@@ -4,6 +4,7 @@ import createController from "modules/Categories/usecases/create/createControlle
 import deleteController from "modules/Categories/usecases/delete/deleteController";
 import findAllController from "modules/Categories/usecases/findAll/findAllController";
 import findByIdController from "modules/Categories/usecases/findById/findByIdController";
+import updateController from "modules/Categories/usecases/update/updateController";
 
 const categoryRouter = Router();
 
@@ -15,7 +16,7 @@ categoryRouter.get('/:id', findByIdController.handle);
 categoryRouter.get('/',paginationMiddleware.execute ,findAllController.handle);
 
 // Update
-
+categoryRouter.put('/:id', updateController.handle);
 
 // Delete
 categoryRouter.delete('/:id', deleteController.handle);

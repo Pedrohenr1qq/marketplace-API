@@ -22,8 +22,9 @@ export class CategoryRepositoriesMongoDB implements ICategoyRepositories{
     return await CategorySchema.find().limit(limit).skip(offset);
   }
 
-
-
+  async update(id: string, data: Category): Promise<void>{
+    await CategorySchema.findByIdAndUpdate(id, data);
+  }
 
   async delete(id: string): Promise<void>{
     await CategorySchema.findByIdAndDelete(id);
