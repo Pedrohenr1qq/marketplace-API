@@ -17,4 +17,9 @@ export class ProductRepositoriesMongoDB implements IProductRepositories{
     const product = await ProductSchema.findById(id);
     return product;
   }
+
+  async findAll(limit: number, offset: number): Promise<Product[]>{
+    const products = await ProductSchema.find().limit(limit).skip(offset);
+    return products;
+  }
 }
