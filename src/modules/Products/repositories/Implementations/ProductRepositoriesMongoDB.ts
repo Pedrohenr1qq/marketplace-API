@@ -1,6 +1,7 @@
 import { Product } from "modules/Products/entities/Product";
 import { IProductRepositories } from "../IProductRepositories";
 import ProductSchema from "modules/Products/schemas/ProductSchema";
+import { Category } from "modules/Categories/entities/Category";
 
 export class ProductRepositoriesMongoDB implements IProductRepositories{
 
@@ -30,4 +31,18 @@ export class ProductRepositoriesMongoDB implements IProductRepositories{
   async delete(id: string): Promise<void>{
     await ProductSchema.findByIdAndDelete(id);
   }
+
+  async addCategory(productId: string, categoryId: string): Promise<void>{
+    await ProductSchema.findOneAndUpdate(
+      {_id: productId},
+      {
+        $push:{
+          categories: {
+            _id: categoryId
+          }
+        }
+      }
+    );
+  }
+
 }

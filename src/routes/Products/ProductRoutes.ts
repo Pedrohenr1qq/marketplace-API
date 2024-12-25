@@ -1,5 +1,6 @@
 import { Router } from "express";
 import paginationMiddleware from "middlewares/paginationMiddleware";
+import addCategoryController from "modules/Products/useCases/addCategory/addCategoryController";
 import createController from "modules/Products/useCases/create/createController";
 import deleteController from "modules/Products/useCases/delete/deleteController";
 import findAllController from "modules/Products/useCases/findAll/findAllController";
@@ -10,6 +11,7 @@ const productRouter = Router();
 
 // Create
 productRouter.post('/', createController.handle);
+productRouter.post('/:productId', addCategoryController.handle);
 
 // Read
 productRouter.get('/:id', findByIdController.handle);
