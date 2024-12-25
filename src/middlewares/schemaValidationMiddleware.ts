@@ -15,4 +15,4 @@ class ValidateSchema{
 
 }
 
-export default new ValidateSchema()
+export default new ValidateSchema();
