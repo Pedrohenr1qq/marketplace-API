@@ -45,4 +45,17 @@ export class ProductRepositoriesMongoDB implements IProductRepositories{
     );
   }
 
+  async removeCategory(productId: string, categoryId: string): Promise<void>{
+    await ProductSchema.findOneAndUpdate(
+      {_id: productId},
+      {
+        $pull:{
+          categories: {
+            _id: categoryId
+          }
+        }
+      }
+    );
+  }
+
 }

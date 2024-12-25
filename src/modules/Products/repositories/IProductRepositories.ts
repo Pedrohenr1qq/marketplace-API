@@ -9,4 +9,5 @@ export interface IProductRepositories{
   update(id: string, data: Product): Promise<void>;
   delete(id: string): Promise<void>;
   addCategory(productId: string, categoryId: string): Promise<void>;
+  removeCategory(productId: string, categoryId: string): Promise<void>;
 }
