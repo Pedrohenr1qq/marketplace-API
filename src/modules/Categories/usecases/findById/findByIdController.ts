@@ -4,20 +4,11 @@ import { FindByIdService } from "./findByIdService";
 
 class FindByIdController{
   async handle(req: Request, res: Response){
-    try {
-      const {id} = req.params;
-    
-      const findAllService = container.resolve(FindByIdService);
-      
-      const category = await findAllService.execute(id);
+    const {id} = req.params;
+  
+    const findAllService = container.resolve(FindByIdService);
+    const category = await findAllService.execute(id);
 
-      res.send(category);
-
-    } catch (error:any) {
-      res.status(500).send("Error: " + error.message);
-    }
-
+    res.send(category);
   }
-}
-
-export default new FindByIdController();
+} export default new FindByIdController();

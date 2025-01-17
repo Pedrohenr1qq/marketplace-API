@@ -4,19 +4,12 @@ import { DeleteService } from "./deleteService";
 
 class DeleteController{
   async handle(req: Request, res: Response){
+    const {id} = req.params;
 
-    try {
-      const {id} = req.params;
+    const deleteService = container.resolve(DeleteService);
+    
+    await deleteService.execute(id);
 
-      const deleteService = container.resolve(DeleteService);
-      
-      await deleteService.execute(id);
-
-      res.sendStatus(204);
-    } catch (error:any) {
-      res.status(500).send("Error: "+ error.message);
-    }
+    res.sendStatus(204);
   }
-}
-
-export default new DeleteController();
+} export default new DeleteController();

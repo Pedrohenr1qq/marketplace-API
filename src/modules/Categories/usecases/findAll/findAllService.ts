@@ -1,3 +1,4 @@
+import { NotFoundError } from "helpers/errors/apiError";
 import { Category } from "modules/Categories/entities/Category";
 import { ICategoyRepositories } from "modules/Categories/repositories/ICategoryRepositories";
 import { inject, injectable } from "tsyringe";
@@ -11,7 +12,7 @@ export class FindAllService{
 
   async execute(limit: number, offset: number): Promise<Category[]>{
     const categories =  await this.CategoryRepositories.findAll(limit, offset);
-    if(!categories.length)  throw new Error("Categories not found");
+    if(!categories.length)  throw new NotFoundError("Categories not found");
     
     return categories;
   }
