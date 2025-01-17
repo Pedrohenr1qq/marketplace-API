@@ -4,19 +4,12 @@ import { AddCategoryService } from "./addCategoryService";
 
 class AddCategoryController{
   async handle(req: Request, res: Response){
-    try {
-      const {productId} = req.params;
-      const {categoryId} = req.body;
+    const {productId} = req.params;
+    const {categoryId} = req.body;
 
-      const addCategoryService = container.resolve(AddCategoryService);
-      await addCategoryService.execute(productId, categoryId);
+    const addCategoryService = container.resolve(AddCategoryService);
+    await addCategoryService.execute(productId, categoryId);
 
-      res.sendStatus(201);
-      
-    } catch (error:any) {
-      res.status(500).send("Error: "+ error.message);
-    }
+    res.sendStatus(201);
   }
-}
-
-export default new AddCategoryController();
+} export default new AddCategoryController();

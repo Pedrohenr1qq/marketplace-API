@@ -1,3 +1,4 @@
+import { NotFoundError } from "helpers/errors/apiError";
 import { Product } from "modules/Products/entities/Product";
 import { IProductRepositories } from "modules/Products/repositories/IProductRepositories";
 import { inject, injectable } from "tsyringe";
@@ -11,7 +12,7 @@ export class FindAllService{
 
   async execute(limit: number, offset: number): Promise<Product[]>{
     const products = await this.ProductRepositories.findAll(limit, offset);
-    if(!products.length) throw new Error("Products not found");
+    if(!products.length) throw new NotFoundError("Products not found");
 
     return products;
   }

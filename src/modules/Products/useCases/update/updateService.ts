@@ -1,3 +1,4 @@
+import { NotFoundError } from "helpers/errors/apiError";
 import { Product } from "modules/Products/entities/Product";
 import { IProductRepositories } from "modules/Products/repositories/IProductRepositories";
 import { injectable, inject } from "tsyringe";
@@ -11,7 +12,7 @@ export class UpdateService{
 
   async execute(id: string, data: Product): Promise<void>{
     const product = await this.ProductRepositories.findById(id);
-    if(!product) throw new Error("Product not found");
+    if(!product) throw new NotFoundError("Product not found");
 
     await this.ProductRepositories.update(id, data);
   }

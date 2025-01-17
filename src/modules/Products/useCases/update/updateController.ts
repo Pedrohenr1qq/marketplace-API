@@ -3,9 +3,7 @@ import { container } from "tsyringe";
 import { UpdateService } from "./updateService";
 
 class UpdateController{
-  async handle(req: Request, res: Response){
-    try {
-     
+  async handle(req: Request, res: Response){     
     const {id} = req.params;
     const data = req.body;
 
@@ -13,11 +11,5 @@ class UpdateController{
     await updateService.execute(id, data); 
 
     res.sendStatus(204);
-
-    } catch (error: any) {
-      res.status(500).send("Error: "+ error.message);
-    }
   }
-}
-
-export default new UpdateController();
+} export default new UpdateController();
