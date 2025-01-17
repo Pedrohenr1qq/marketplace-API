@@ -2,6 +2,7 @@ import { User } from "modules/Users/entities/User";
 import { IUserRepositories } from "modules/Users/repositories/IUserRepositories";
 import { inject, injectable } from "tsyringe";
 import bcrypt from "bcrypt";
+import { NotFoundError } from "helpers/errors/apiError";
 
 @injectable()
 export class UpdateService{
@@ -12,7 +13,7 @@ export class UpdateService{
 
   async execute(id: string, data: User){
     const user = await this.userRepositories.findById(id);
-    if(!user) throw new Error("User not found");
+    if(!user) throw new NotFoundError("User not found");
 
     if(!data.password){
       await this.userRepositories.update(id, data);

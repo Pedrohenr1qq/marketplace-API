@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import { UserRepositoriesMongoDB } from "modules/Users/repositories/implementations/UserRepositoriesMongoDB";
 import { inject, injectable } from "tsyringe";
 import { IUserRepositories } from "modules/Users/repositories/IUserRepositories";
+import { ConflitError } from "helpers/errors/apiError";
 
 @injectable()
 export class CreateService{
@@ -16,7 +17,7 @@ export class CreateService{
     const hashPassword = await bcrypt.hash(body.password, 10);
 
     const userExitst = await this.userRepositories.findByEmail(body.email);
-    if(userExitst) throw new Error("User already exists");
+    if(userExitst) throw new ConflitError("User already exists");
 
     await this.userRepositories.create({...body, password: hashPassword});
   }

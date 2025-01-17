@@ -6,15 +6,10 @@ class CreateController{
   constructor(){}
 
   async handle(req: Request , res: Response): Promise<void>{
-    try {
-      const body = req.body;
-      const createService = container.resolve(CreateService);
-      await createService.execute(body);
-      res.sendStatus(201);
-
-    } catch (error: any) {
-      res.status(500).send(error.message);
-    }
+    const body = req.body;
+    const createService = container.resolve(CreateService);
+    await createService.execute(body);
+    res.sendStatus(201);
   }
 }
 

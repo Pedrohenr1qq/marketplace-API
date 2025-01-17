@@ -1,3 +1,4 @@
+import { NotFoundError } from "helpers/errors/apiError";
 import { User } from "modules/Users/entities/User";
 import { UserRepositoriesMongoDB } from "modules/Users/repositories/implementations/UserRepositoriesMongoDB";
 import { IUserRepositories } from "modules/Users/repositories/IUserRepositories";
@@ -12,7 +13,7 @@ export class FindAllService{
 
   async execute(limit: number, offset: number): Promise<User[]>{
     const users = await this.userRepositories.findAll(limit, offset);
-    if(!users.length) throw new Error("Users not found!"); 
+    if(!users.length) throw new NotFoundError("Users not found!"); 
     
     return users;
   }

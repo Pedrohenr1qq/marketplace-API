@@ -1,3 +1,4 @@
+import { NotFoundError } from "helpers/errors/apiError";
 import { deleteFile } from "helpers/upload/deleteFile";
 import { IUserRepositories } from "modules/Users/repositories/IUserRepositories";
 import { inject, injectable } from "tsyringe";
@@ -12,7 +13,7 @@ export class UpdateAvatarService{
   async execute(id: string, avatar: string): Promise<void>{
     const user = await this.UserRepositories.findById(id);
 
-    if(!user) throw new Error('User not found');
+    if(!user) throw new NotFoundError('User not found');
 
     if(user.image) await deleteFile(user.image);
 

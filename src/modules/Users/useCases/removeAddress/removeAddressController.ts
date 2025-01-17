@@ -4,20 +4,13 @@ import {RemoveAddressService } from "./removeAddressService";
 
 class RemoveAddressController{
   async handle(req: Request, res: Response): Promise<void>{
-    try {
-      const userId = res.locals.user._id;
-      const {addressId} = req.params;
+    const userId = res.locals.user._id;
+    const {addressId} = req.params;
 
-      const removeAddressService = container.resolve(RemoveAddressService);
+    const removeAddressService = container.resolve(RemoveAddressService);
 
-      await removeAddressService.execute(userId, addressId);
+    await removeAddressService.execute(userId, addressId);
 
-      res.sendStatus(204);
-
-    } catch (error: any) {
-      res.status(500).send(error.message);
-    }
+    res.sendStatus(204);
   }
-}
-
-export default new RemoveAddressController();
+} export default new RemoveAddressController();
