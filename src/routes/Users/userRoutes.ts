@@ -13,8 +13,13 @@ import updateController from "modules/Users/useCases/update/updateController";
 import validateSchema from "middlewares/schemaValidationMiddleware";
 import { UserSchemaJoi } from "modules/Users/schemas/joi/UserSchemaJoi";
 import { AddressSchemaJoi } from "modules/Users/schemas/joi/AddressSchemaJoi";
+import updateAvatarController from "modules/Users/useCases/updateAvatar/updateAvatarController";
+
+import multer from "multer";
+import uploadConfig from "../../helpers/upload/index";
 
 const userRoutes = Router();
+const uploadAvatar = multer(uploadConfig.upload("./uploads/avatar"));
 
 // Create
 userRoutes.post('/', validateSchema.execute(UserSchemaJoi), createController.handle);
@@ -33,6 +38,7 @@ userRoutes.get('/:id', findByIdController.handle);
 
 // Update
 userRoutes.put('/', updateController.handle);
+userRoutes.patch('/avatar', uploadAvatar.single("avatar") ,updateAvatarController.handle);
 
 // Delete
 userRoutes.delete('/', deleteController.handle);

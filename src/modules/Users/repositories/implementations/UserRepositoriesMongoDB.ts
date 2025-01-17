@@ -104,4 +104,8 @@ export class UserRepositoriesMongoDB implements IUserRepositories{
     );
   }
 
+  async updateAvatar(id: string, avatar: string): Promise<void>{
+    await UserSchema.updateOne({_id: id}, {$set: {image: avatar}});
+  }
+
 }
