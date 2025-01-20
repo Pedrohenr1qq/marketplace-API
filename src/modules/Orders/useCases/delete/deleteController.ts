@@ -9,7 +9,7 @@ class FindAllController{
     const deleteService = container.resolve(DeleteService);
     await deleteService.execute(id);
 
-    res.sendStatus(200);
+    res.sendStatus(204);
 
   }
 
