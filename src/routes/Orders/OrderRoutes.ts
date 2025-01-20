@@ -4,6 +4,7 @@ import paginationMiddleware from "middlewares/paginationMiddleware";
 import validationMiddleware from "middlewares/schemaValidationMiddleware";
 import { OrderSchemaJoi } from "modules/Orders/schemas/joi/OrderSchemaJoi";
 import createController from "modules/Orders/useCases/create/createController";
+import deleteController from "modules/Orders/useCases/delete/deleteController";
 import findAllController from "modules/Orders/useCases/findAll/findAllController";
 import findByIdController from "modules/Orders/useCases/findById/findByIdController";
 
@@ -21,5 +22,6 @@ orderRouter.get('/:id', findByIdController.handle);
 // UPDATE
 
 // DELETE
+orderRouter.delete('/:id', deleteController.handle);
 
 export default orderRouter;
