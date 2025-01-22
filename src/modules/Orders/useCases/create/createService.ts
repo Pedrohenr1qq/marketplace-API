@@ -1,7 +1,5 @@
-import { NotFoundError } from "helpers/errors/apiError";
 import { Order } from "modules/Orders/entities/Order";
 import { IOrderRepositories } from "modules/Orders/repositories/IOrderRepositories";
-import { IUserRepositories } from "modules/Users/repositories/IUserRepositories";
 import { ObjectId } from "mongodb";
 import { inject, injectable } from "tsyringe";
 
