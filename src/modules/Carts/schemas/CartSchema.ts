@@ -15,4 +15,4 @@ const CartShcema = new Schema<Cart>({
   created_at: {type: Date, required: true, default: Date.now()}
 });
 
-export default model<Cart>("orders", CartShcema);
+export default model<Cart>("carts", CartShcema);
