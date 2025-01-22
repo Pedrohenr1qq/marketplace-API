@@ -14,4 +14,8 @@ export class CartRepositoriesMongoDB implements ICartRepositories {
   findAll(limit: number, offset: number): Promise<Cart[]>{
     return CartSchema.find().limit(limit).skip(offset);
   }
+
+  async delete(id: string): Promise<void>{
+    await CartSchema.deleteOne({ _id: id });
+  }
 }

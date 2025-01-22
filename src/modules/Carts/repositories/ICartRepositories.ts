@@ -4,4 +4,5 @@ export interface ICartRepositories{
   create(data: Cart): Promise<void>;
   findById(id: string): Promise<Cart | null>;
   findAll(limit: number, offset: number): Promise<Cart[]>;
+  delete(id: string): Promise<void>;
 }
