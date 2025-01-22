@@ -6,4 +6,12 @@ export class CartRepositoriesMongoDB implements ICartRepositories {
   async create(data: Cart): Promise<void> {
     await CartSchema.create(data);
   }
+
+  async findById(id: string): Promise<Cart | null>{
+    const cart = await CartSchema.findOne({ _id: id });
+    return cart;
+  }
+  findAll(limit: number, offset: number): Promise<Cart[]>{
+    return CartSchema.find().limit(limit).skip(offset);
+  }
 }
