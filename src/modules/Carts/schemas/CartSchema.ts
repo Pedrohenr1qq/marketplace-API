@@ -11,7 +11,6 @@ const CartShcema = new Schema<Cart>({
   total_price: {type: Number, required: true},
   freight: {type: Number, required: true},
   user_id: {type: Schema.Types.ObjectId, required: true, ref: "users"},
-  concluded: {type: Boolean, default: false},
   created_at: {type: Date, required: true, default: Date.now()}
 });
 
