@@ -1,8 +1,6 @@
-import { NotFoundError } from "helpers/errors/apiError";
-import { Category } from "modules/Categories/entities/Category";
-import { ICategoyRepositories } from "modules/Categories/repositories/ICategoryRepositories";
-import { IProductRepositories } from "modules/Products/repositories/IProductRepositories";
-import { normalize } from "path";
+import { NotFoundError } from "@/helpers/errors/apiError";
+import { ICategoyRepositories } from "@/modules/Categories/repositories/ICategoryRepositories";
+import { IProductRepositories } from "@/modules/Products/repositories/IProductRepositories";
 import { inject, injectable } from "tsyringe";
 
 @injectable()

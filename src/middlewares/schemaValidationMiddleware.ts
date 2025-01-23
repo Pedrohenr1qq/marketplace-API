@@ -1,6 +1,5 @@
 import {Request, Response, NextFunction } from "express";
-import { ConflitError } from "helpers/errors/apiError";
-import { UserSchemaJoi } from "modules/Users/schemas/joi/UserSchemaJoi";
+import { ConflitError } from "@/helpers/errors/apiError";
 
 class ValidateSchema{
   execute(schema: any){

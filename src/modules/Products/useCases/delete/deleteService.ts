@@ -1,6 +1,5 @@
-import { NotFoundError } from "helpers/errors/apiError";
-import { Product } from "modules/Products/entities/Product";
-import { IProductRepositories } from "modules/Products/repositories/IProductRepositories";
+import { NotFoundError } from "@/helpers/errors/apiError";
+import { IProductRepositories } from "@/modules/Products/repositories/IProductRepositories";
 import { injectable, inject } from "tsyringe";
 
 @injectable()

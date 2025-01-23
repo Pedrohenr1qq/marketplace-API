@@ -1,12 +1,12 @@
 import { Router } from "express";
-import paginationMiddleware from "middlewares/paginationMiddleware";
-import validationMiddleware from "middlewares/schemaValidationMiddleware";
-import { CategorySchemaJoi } from "modules/Categories/schemas/joi/CategorySchemaJoi";
-import createController from "modules/Categories/usecases/create/createController";
-import deleteController from "modules/Categories/usecases/delete/deleteController";
-import findAllController from "modules/Categories/usecases/findAll/findAllController";
-import findByIdController from "modules/Categories/usecases/findById/findByIdController";
-import updateController from "modules/Categories/usecases/update/updateController";
+import paginationMiddleware from "@/middlewares/paginationMiddleware";
+import validationMiddleware from "@/middlewares/schemaValidationMiddleware";
+import { CategorySchemaJoi } from "@/modules/Categories/schemas/joi/CategorySchemaJoi";
+import createController from "@/modules/Categories/usecases/create/createController";
+import deleteController from "@/modules/Categories/usecases/delete/deleteController";
+import findAllController from "@/modules/Categories/usecases/findAll/findAllController";
+import findByIdController from "@/modules/Categories/usecases/findById/findByIdController";
+import updateController from "@/modules/Categories/usecases/update/updateController";
 
 const categoryRouter = Router();
 

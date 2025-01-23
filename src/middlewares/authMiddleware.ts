@@ -2,8 +2,8 @@ import { NextFunction, Request, Response } from "express";
 import "dotenv/config"
 import jwt, { JwtPayload } from "jsonwebtoken"
 import { container } from "tsyringe";
-import { FindByIdService } from "modules/Users/useCases/findById/findByIdService";
-import { UnauthorizedError } from "helpers/errors/apiError";
+import { FindByIdService } from "@/modules/Users/useCases/findById/findByIdService";
+import { UnauthorizedError } from "@/helpers/errors/apiError";
 
 interface IToken extends JwtPayload{
   id: string; 

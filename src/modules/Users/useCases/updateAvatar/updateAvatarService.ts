@@ -1,6 +1,6 @@
-import { NotFoundError } from "helpers/errors/apiError";
-import { deleteFile } from "helpers/upload/deleteFile";
-import { IUserRepositories } from "modules/Users/repositories/IUserRepositories";
+import { NotFoundError } from "@/helpers/errors/apiError";
+import { deleteFile } from "@/helpers/upload/deleteFile";
+import { IUserRepositories } from "@/modules/Users/repositories/IUserRepositories";
 import { inject, injectable } from "tsyringe";
 
 @injectable()

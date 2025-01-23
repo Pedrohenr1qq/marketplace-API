@@ -1,6 +1,6 @@
-import { NotFoundError } from "helpers/errors/apiError";
-import { Cart } from "modules/Carts/entities/Cart";
-import { ICartRepositories } from "modules/Carts/repositories/ICartRepositories";
+import { NotFoundError } from "@/helpers/errors/apiError";
+import { Cart } from "@/modules/Carts/entities/Cart";
+import { ICartRepositories } from "@/modules/Carts/repositories/ICartRepositories";
 import { inject, injectable } from "tsyringe";
 
 @injectable()

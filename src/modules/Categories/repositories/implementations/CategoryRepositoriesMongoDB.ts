@@ -1,6 +1,6 @@
-import { Category } from "modules/Categories/entities/Category";
+import { Category } from "@/modules/Categories/entities/Category";
 import { ICategoyRepositories } from "../ICategoryRepositories";
-import CategorySchema from "modules/Categories/schemas/CategorySchema";
+import CategorySchema from "@/modules/Categories/schemas/CategorySchema";
 
 export class CategoryRepositoriesMongoDB implements ICategoyRepositories{
 

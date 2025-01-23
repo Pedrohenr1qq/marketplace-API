@@ -1,7 +1,6 @@
-import { Product } from "modules/Products/entities/Product";
+import { Product } from "@/modules/Products/entities/Product";
 import { IProductRepositories } from "../IProductRepositories";
-import ProductSchema from "modules/Products/schemas/ProductSchema";
-import { Category } from "modules/Categories/entities/Category";
+import ProductSchema from "@/modules/Products/schemas/ProductSchema";
 
 export class ProductRepositoriesMongoDB implements IProductRepositories{
 

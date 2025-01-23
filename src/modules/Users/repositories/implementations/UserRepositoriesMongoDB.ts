@@ -1,8 +1,8 @@
-import { User } from "modules/Users/entities/User";
+import { User } from "@/modules/Users/entities/User";
 import { IUserRepositories } from "../IUserRepositories";
-import UserSchema from "modules/Users/schemas/UserSchema";
-import { Address } from "modules/Users/entities/Address";
-import { Product } from "modules/Products/entities/Product";
+import UserSchema from "@/modules/Users/schemas/UserSchema";
+import { Address } from "@/modules/Users/entities/Address";
+import { Product } from "@/modules/Products/entities/Product";
 
 export class UserRepositoriesMongoDB implements IUserRepositories{
   async create(body: User): Promise<void> {

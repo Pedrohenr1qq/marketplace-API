@@ -1,6 +1,6 @@
-import { ConflitError } from "helpers/errors/apiError";
-import { Category } from "modules/Categories/entities/Category";
-import { ICategoyRepositories } from "modules/Categories/repositories/ICategoryRepositories";
+import { ConflitError } from "@/helpers/errors/apiError";
+import { Category } from "@/modules/Categories/entities/Category";
+import { ICategoyRepositories } from "@/modules/Categories/repositories/ICategoryRepositories";
 import { inject, injectable } from "tsyringe";
 
 @injectable()
