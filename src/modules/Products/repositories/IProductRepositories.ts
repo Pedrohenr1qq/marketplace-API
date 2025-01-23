@@ -10,4 +10,5 @@ export interface IProductRepositories{
   delete(id: string): Promise<void>;
   addCategory(productId: string, categoryId: string): Promise<void>;
   removeCategory(productId: string, categoryId: string): Promise<void>;
+  updateImage(id: string, image: string): Promise<void>;
 }

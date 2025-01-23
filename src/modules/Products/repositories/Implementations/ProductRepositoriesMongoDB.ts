@@ -58,4 +58,7 @@ export class ProductRepositoriesMongoDB implements IProductRepositories{
     );
   }
 
+  async updateImage(id: string, image: string): Promise<void>{
+    await ProductSchema.updateOne({_id: id}, {$set: {image: image}});
+  }
 }

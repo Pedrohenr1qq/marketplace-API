@@ -9,8 +9,12 @@ import findAllController from "modules/Products/useCases/findAll/findAllControll
 import findByIdController from "modules/Products/useCases/findById/findByIdController";
 import removeCategoryController from "modules/Products/useCases/removeCategory/removeCategoryController";
 import updateController from "modules/Products/useCases/update/updateController";
+import multer from "multer";
 
 const productRouter = Router();
+import uploadConfig from "../../helpers/upload/index";
+
+const uploadImage = multer(uploadConfig.upload("./uploads/productImages"));
 
 // Create
 productRouter.post('/', validationMiddleware.execute(ProductSchemaJoi), createController.handle);
@@ -22,6 +26,7 @@ productRouter.get('/', paginationMiddleware.execute, findAllController.handle);
 
 // Update
 productRouter.put('/:id', updateController.handle);
+productRouter.patch('/image/:id', uploadImage.single("image"), updateController.handle);
 
 // Delete
 productRouter.delete('/:id', deleteController.handle);
