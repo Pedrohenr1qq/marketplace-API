@@ -17,6 +17,6 @@ export class UpdateAvatarService{
 
     if(user.image) await deleteFile(user.image);
 
-    this.UserRepositories.updateAvatar(id, avatar);
+    await this.UserRepositories.updateAvatar(id, avatar);
   }
 }

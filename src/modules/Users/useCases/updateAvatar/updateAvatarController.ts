@@ -7,7 +7,7 @@ class UpdateAvatarController{
     const {_id} = res.locals.user;
     const avatar = req.file?.path as string;
     const updateAvatarService = container.resolve(UpdateAvatarService);
-    updateAvatarService.execute(_id, avatar);
+    await updateAvatarService.execute(_id, avatar);
     res.sendStatus(204);
   }
 
