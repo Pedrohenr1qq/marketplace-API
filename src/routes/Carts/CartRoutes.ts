@@ -7,7 +7,7 @@ import createController from "modules/Carts/useCases/create/createController";
 import deleteController from "modules/Carts/useCases/delete/deleteController";
 import findAllControler from "modules/Carts/useCases/findAll/findAllControler";
 import findByIdController from "modules/Carts/useCases/findById/findByIdController";
-import UpdateStatusController from "modules/Carts/useCases/update/updateStatusController";
+import updateController from "modules/Carts/useCases/update/updateController";
 
 
 const cartRouter = Router();
@@ -22,7 +22,7 @@ cartRouter.get('/', paginationMiddleware.execute, findAllControler.handle);
 cartRouter.get('/:id', findByIdController.handle);
 
 // UPDATE
-cartRouter.patch('/:id', UpdateStatusController.handle);
+cartRouter.put('/:id', updateController.handle);
 
 // DELETE
 cartRouter.delete('/:id', deleteController.handle);
