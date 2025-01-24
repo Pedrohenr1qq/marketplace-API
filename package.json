@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest "
+    "test": "NODE_ENV=test  NODE_OPTIONS=--experimental-vm-modules jest "
   },
   "keywords": [],
   "author": "",
