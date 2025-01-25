@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { singinService } from "./singinService";
+import { SinginService } from "./singinService";
 
 class SigninController {
   handle =  async(req: Request, res: Response): Promise<void> => {
     try {
       const body = req.body;
-      const signinService = container.resolve(singinService);
-      const token = await signinService.execute(body);
+      const singinService = container.resolve(SinginService);
+      const token = await singinService.execute(body);
 
       res.send({Token: token});
 

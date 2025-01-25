@@ -6,6 +6,7 @@ import {faker} from '@faker-js/faker'
 import { ObjectId } from "mongodb";
 import { dirname, join } from "path";
 import fs from "fs";
+import bcrypt from 'bcrypt'
 
 
 export function createPathAndImage(){
@@ -30,9 +31,11 @@ export function newUser(){
   };
 }
 
+export const userToCreateDb = newUser();
+
 export async function newUserDB(){
-  const user = newUser();
-  const userDB = await UserSchema.create(user);
+  const userPasswordHashed = {...userToCreateDb, password: await bcrypt.hash(userToCreateDb.password, 10)};
+  const userDB = await UserSchema.create(userPasswordHashed);
   return userDB;
 }
 
@@ -40,6 +43,18 @@ export function newInvalidUserSchema(){
  const user = newUser();
   return {...user, name: 12, password: 111, email: false}
 }
+
+export function mockCreateUserDB(){
+  return {
+    ...userToCreateDb,
+    password: bcrypt.hashSync(userToCreateDb.password, 10),
+    created_at: new Date(),
+    _id: newRandomObjectId(),
+    addresses: [],
+    favorite_products: []
+  }
+}
+
 
 export function newInvalidToken(){
   return faker.string.uuid();
