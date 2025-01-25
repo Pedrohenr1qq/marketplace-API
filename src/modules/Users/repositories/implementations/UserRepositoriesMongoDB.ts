@@ -85,7 +85,7 @@ export class UserRepositoriesMongoDB implements IUserRepositories{
   async findFavoriteProductById(userId: string, productId: string): Promise<Product | null>{
     return await UserSchema.findOne(
         {_id: userId, "favorite_products._id": productId},
-        {"avorite_products.$": 1}
+        {"favorite_products.$": 1}
       );
   }
 

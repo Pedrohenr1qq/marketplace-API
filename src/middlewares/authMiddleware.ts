@@ -23,24 +23,26 @@ class AuthMiddleware{
     const [schema, token] = parts;
     if (!/^Bearer$/i.test(schema)) throw new UnauthorizedError("invalid token");
 
-    jwt.verify(token, secret, async(err, decoded) => {
-      if(err) throw new UnauthorizedError("invalid token");
-      if(!decoded) throw new UnauthorizedError("invalid token");
-    
-      const {id} = decoded as IToken;
-
       try {
+        const decoded = await new Promise<IToken>((resolve, reject) => {
+          jwt.verify(token, secret, async(err, decoded) => {
+            if(err) {
+              return reject(new UnauthorizedError("invalid token"));
+            };
+            resolve(decoded as IToken);
+          });
+        })
+        const {id} = decoded;
+
         const findByIdService = container.resolve(FindByIdService);
         const user = await findByIdService.execute(id);
         if(!user) throw new UnauthorizedError("invalid token");
         
         res.locals.user = user;
-
         return next();
 
       } catch (error: any) {
-        return res.status(500).send(error.message);
+        return next(error);
       }
-    });
   }
 } export default new AuthMiddleware();

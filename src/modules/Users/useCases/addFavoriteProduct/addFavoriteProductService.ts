@@ -6,12 +6,15 @@ import { inject, injectable } from "tsyringe";
 export class AddFavoriteProductService{
   constructor(
     @inject ("UserRepositories")
-    private userRepositories: IUserRepositories
+    private userRepositories: IUserRepositories,
   ){}
 
   async execute(userId: string, productId: string){
     const user = await this.userRepositories.findById(userId);
     if(!user) throw new NotFoundError("User not found");
+
+    const product = await this.userRepositories.findFavoriteProductById(userId, productId);
+    if(!product) throw new NotFoundError("Product not found");
     
     await this.userRepositories.addFavoriteProduct(userId, productId);
   }

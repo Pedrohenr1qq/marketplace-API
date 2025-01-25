@@ -9,7 +9,7 @@ class FindAllController{
     const findAllService = container.resolve(FindAllService);
     const users = await findAllService.execute(limit, offset);
 
-    res.send({users});
+    res.send(users);
   }
 }
 

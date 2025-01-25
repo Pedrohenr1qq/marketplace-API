@@ -17,6 +17,7 @@ import updateAvatarController from "@/modules/Users/useCases/updateAvatar/update
 
 import multer from "multer";
 import uploadConfig from "../../helpers/upload/index";
+import findAvatarController from "@/modules/Users/useCases/findAvatarUser/findAvatarController";
 
 const userRoutes = Router();
 const uploadAvatar = multer(uploadConfig.upload("./uploads/avatar"));
@@ -31,13 +32,13 @@ userRoutes.use(authMiddleware.execute);
 userRoutes.post('/add-address', validateSchema.execute(AddressSchemaJoi),addAddressController.handle);
 userRoutes.post('/add-favorite-product/:productId', addFavoriteProductController.handle);
 
-
 // Read
 userRoutes.get('/', paginationMiddleware.execute,findAllController.handle);
 userRoutes.get('/:id', findByIdController.handle);
+userRoutes.get('/avatar/:id', findAvatarController.handle);
 
 // Update
-userRoutes.put('/', updateController.handle);
+userRoutes.patch('/', updateController.handle);
 userRoutes.patch('/avatar', uploadAvatar.single("avatar") ,updateAvatarController.handle);
 
 // Delete

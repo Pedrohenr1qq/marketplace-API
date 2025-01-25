@@ -6,7 +6,7 @@ import { inject, injectable } from "tsyringe";
 export class RemoveFavoriteProductService{
   constructor(
     @inject ("UserRepositories")
-    private userRepositories: IUserRepositories
+    private userRepositories: IUserRepositories,
   ){}
 
   async execute(userId: string, productId: string){
@@ -15,7 +15,7 @@ export class RemoveFavoriteProductService{
 
     const product = await this.userRepositories.findFavoriteProductById(userId, productId);
     if(!product) throw new NotFoundError("Product not found");
-    
+
     await this.userRepositories.removeFavoriteProduct(userId, productId);
   }
 }
